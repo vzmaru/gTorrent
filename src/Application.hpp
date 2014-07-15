@@ -5,25 +5,23 @@
 #include <core/Core.hpp>
 #include <memory>
 
+// I know this double class thing is fucking ugly, but it's need here just for this one class.
 class Application;
-
-typedef std::shared_ptr<Application> app_ptr;
 
 class Application
 {
 private:
-	static app_ptr m_app;
+	static Application *m_app;
 	
-	// Private Member Functions & Variables 
-	core_ptr m_core;
+	Core *m_core;
 	gui_ptr m_gui;
 
 public:
 	Application();
-	static app_ptr getSingleton();
+	static Application &getSingleton();
 
 	// Getters
-	core_ptr &getCore();
+	Core &getCore();
 
 	// Public Member Functions & Variables
 	int run(int argc, char **argv);
