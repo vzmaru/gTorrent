@@ -9,7 +9,7 @@
 class GtkMainWindow : public Gtk::Window
 {
 private:
-	core_ptr &m_core;
+	Core &m_core;
 
 	Gtk::HeaderBar *header;
 	GtkTorrentTreeView *m_treeview;
@@ -25,4 +25,3 @@ public:
 	bool onDestroy(GdkEventAny *event);
 	bool onSecTick();
 };
-

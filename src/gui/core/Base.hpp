@@ -10,7 +10,7 @@ typedef std::shared_ptr<GuiBase> gui_ptr;
 class GuiBase
 {
 protected:
-	core_ptr &m_core;
+	Core &m_core;
 	
 public:
 	GuiBase();

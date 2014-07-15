@@ -7,7 +7,7 @@
 #include <glibmm.h>
 
 GtkMainWindow::GtkMainWindow() :
-	m_core(Application::getSingleton()->getCore())
+	m_core(Application::getSingleton().getCore())
 {
 	this->set_position(Gtk::WIN_POS_CENTER);
 	this->set_default_size(800, 500);
@@ -64,8 +64,8 @@ void GtkMainWindow::onAddBtnClicked()
 		case Gtk::RESPONSE_OK:
 			for (auto &f : fc.get_filenames())
 			{
-				t_ptr t = m_core->addTorrent(f.c_str());
-				m_treeview->addCell(t);
+				Torrent *t = m_core.addTorrent(f.c_str());
+				//m_treeview->addCell(t);
 			}
 		break;
 	}
@@ -79,14 +79,14 @@ void GtkMainWindow::onAddMagnetBtnClicked()
 
 	switch (r) {
 		case Gtk::RESPONSE_OK:
-			t_ptr t = m_core->addTorrent(d.getMagnetURL());
-			m_treeview->addCell(t);
+			t_ptr *t = m_core.addTorrent(d.getMagnetURL());
+			//m_treeview->addCell(t);
 		break;
 	}
 }
 
 bool GtkMainWindow::onDestroy(GdkEventAny *event)
 {
-	m_core->shutdown();
+	m_core.shutdown();
 	return false;
 }

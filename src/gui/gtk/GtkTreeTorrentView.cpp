@@ -57,7 +57,7 @@ void GtkTorrentTreeView::updateCells()
 	unsigned int i = 0;
 
 	for (auto &c : m_liststore->children()) {
-		t_ptr t = Application::getSingleton()->getCore()->getTorrents()[i];
+		t_ptr t = Application::getSingleton().getCore().getTorrents()[i];
 
 		c[m_cols.m_col_percent] = t->getTotalProgress();
 		c[m_cols.m_col_seeders] = t->getTotalSeeders();
