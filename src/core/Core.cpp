@@ -4,9 +4,6 @@
 Core::Core() :
 	m_running(true)
 {
-	// Fuck your deprecated shit, we're going void down in here
-	// tl;dr, figure out something useful to use the error code for,
-	// like handling what the fuck might happen if listen_on fails kthnx
 	libtorrent::error_code ec;
 	m_session.listen_on(make_pair(6881, 6889), ec);
 }
@@ -22,17 +19,17 @@ bool Core::isRunning()
 	return m_running;
 }
 
-tc_ptr &Core::getTorrents()
+vector<Torrent*> &Core::getTorrents()
 {
 	return m_torrents;
 }
 
-t_ptr Core::addTorrent(string path)
+Torrent *Core::addTorrent(string path)
 {
 	if (path.empty())
 		return NULL;
 	
-	std::shared_ptr<Torrent> t = std::shared_ptr<Torrent>(new Torrent(path));
+	Torrent *t = new Torrent();
 	libtorrent::torrent_handle h = m_session.add_torrent(t->getTorrentParams());
 
 	t->setHandle(h);
