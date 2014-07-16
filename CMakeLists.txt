@@ -40,14 +40,7 @@ LINK_DIRECTORIES (
 
 ADD_EXECUTABLE ( ${PROJECT_NAME}
         src/Application.cpp
-<<<<<<< HEAD
-=======
         src/gui/core/Base.cpp
-        src/gui/gtk/Gtk.cpp
-        src/gui/gtk/GtkAddMagnetLinkWindow.cpp
-        src/gui/gtk/GtkMainWindow.cpp
-        src/gui/gtk/GtkTorrentTreeView.cpp
->>>>>>> a7e10fe5a944ab91a7ac7659fcc949c915154bbc
         src/core/Core.cpp
         src/core/Torrent.cpp
         src/core/Log.cpp
