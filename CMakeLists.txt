@@ -40,7 +40,6 @@ LINK_DIRECTORIES (
 
 ADD_EXECUTABLE ( ${PROJECT_NAME}
         src/Application.cpp
-        src/gui/core/Base.cpp
         src/core/Core.cpp
         src/core/Torrent.cpp
         src/core/Log.cpp
@@ -62,5 +61,16 @@ TARGET_LINK_LIBRARIES ( ${PROJECT_NAME}
         ${Boost_LIBRARIES}
         ${LIBTORRENT_LIBRARIES}
 )      
+
+IF(WIN32)
+	TARGET_LINK_LIBRARIES ( ${PROJECT_NAME}
+			${Boost_LIBRARIES}
+			${LIBTORRENT_LIBRARIES}
+			wsock32
+			ws2_32
+			libcrypto
+			ssl
+	)      
+endif()
 
 INSTALL(TARGETS ${PROJECT_NAME} DESTINATION ${PREFIX}/bin/ PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
