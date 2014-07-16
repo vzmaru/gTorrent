@@ -20,13 +20,8 @@ int Application::run(int argc, char **argv)
 	gt::Log::Debug("Starting up core library...\n");
 	m_core = make_shared<gt::Core>();
 
-	gt::Log::Debug("Starting up GUI layer...\n");
-	m_gui = make_shared<GuiGtk>(argc, argv);
-
 	while (m_core->isRunning()) {
-		m_core->update();
-		m_gui->update();
-	}
+		m_core->update();	}
 
 	return 0;
 }

@@ -33,17 +33,10 @@ INCLUDE_DIRECTORIES( ${PROJECT_BINARY_DIRS} )
 LINK_DIRECTORIES (
         ${Boost_LIBRARY_DIRS}
         ${LIBTORRENT_LIBRARY_DIRS}
-        ${LIBGTKMM_LIBRARY_DIRS}
-        ${LIBGLIBMM_LIBRARY_DIRS}
 )
 
 ADD_EXECUTABLE ( ${PROJECT_NAME}
         src/Application.cpp
-        src/gui/core/Base.cpp
-        src/gui/gtk/Gtk.cpp
-        src/gui/gtk/GtkAddMagnetLinkWindow.cpp
-        src/gui/gtk/GtkMainWindow.cpp
-        src/gui/gtk/GtkTreeTorrentView.cpp
         src/core/Core.cpp
         src/core/Torrent.cpp
         src/core/Log.cpp
@@ -52,8 +45,6 @@ ADD_EXECUTABLE ( ${PROJECT_NAME}
 
 ADD_DEFINITIONS (
         ${LIBTORRENT_CFLAGS}
-        ${LIBGLIBMM_CFLAGS}
-        ${LIBGTKMM_CFLAGS}
 )
 
 INCLUDE_DIRECTORIES (
@@ -61,15 +52,11 @@ INCLUDE_DIRECTORIES (
         src/
         ${Boost_INCLUDE_DIRS}
         ${LIBTORRENT_INCLUDE_DIRS}
-        ${LIBGTKMM_INCLUDE_DIRS}
-        ${LIBGLIBMM_INCLUDE_DIRS}
 )
 
 TARGET_LINK_LIBRARIES ( ${PROJECT_NAME}
         ${Boost_LIBRARIES}
         ${LIBTORRENT_LIBRARIES}
-        ${LIBGTKMM_LIBRARIES}
-        ${LIBGLIBMM_LIBRARIES}
 )      
 
 INSTALL(TARGETS ${PROJECT_NAME} DESTINATION ${PREFIX}/bin/ PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ GROUP_EXECUTE)
