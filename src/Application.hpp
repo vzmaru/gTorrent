@@ -1,6 +1,7 @@
 #pragma once
 
 #include <core/Core.hpp>
+#include <Version.hpp>
 
 class Application
 {

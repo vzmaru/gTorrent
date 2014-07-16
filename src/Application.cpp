@@ -17,9 +17,16 @@ shared_ptr<gt::Core> &Application::getCore()
 
 int Application::run(int argc, char **argv)
 {
-	gt::Log::Debug("Starting up core library...\n");
+	gt::Log::Debug("Starting up core library...");
+        gt::Log::Debug("GTorrent v." GTORRENT_VERSION);
 	m_core = make_shared<gt::Core>();
 
+<<<<<<< HEAD
+=======
+	gt::Log::Debug("Starting up GUI layer...");
+	m_gui = make_shared<GuiGtk>(argc, argv);
+
+>>>>>>> a7e10fe5a944ab91a7ac7659fcc949c915154bbc
 	while (m_core->isRunning()) {
 		m_core->update();	}
 

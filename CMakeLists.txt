@@ -10,10 +10,15 @@ PROJECT (gtorrent)
 
 SET (GTORRENT_VERSION_MAJOR 0)                                                                                                                                                                                                                 
 SET (GTORRENT_VERSION_MINOR 0)
-SET (GTORRENT_VERSION_PATCH 0)
+SET (GTORRENT_VERSION_PATCH 1)
 
 ############################################################
 
+# Configure version into utils/Version.hpp
+SET (VERSION ${GTORRENT_VERSION_MAJOR}.${GTORRENT_VERSION_MINOR}.${GTORRENT_VERSION_PATCH})
+configure_file(src/utils/Version.hpp.in Version.hpp @ONLY)
+
+# Set compiler flags
 SET (CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11 -g -include all.h")
 
 # Fuck liboost for not providing boost.pc or fucking something
@@ -26,7 +31,7 @@ FIND_PACKAGE(Boost COMPONENTS system REQUIRED)
 INCLUDE (FindPkgConfig)
 PKG_SEARCH_MODULE(LIBTORRENT REQUIRED libtorrent-rasterbar)
 
-INCLUDE_DIRECTORIES( ${PROJECT_BINARY_DIRS} )
+INCLUDE_DIRECTORIES( ${PROJECT_BINARY_DIR} )
 
 LINK_DIRECTORIES (
         ${Boost_LIBRARY_DIRS}
@@ -35,6 +40,14 @@ LINK_DIRECTORIES (
 
 ADD_EXECUTABLE ( ${PROJECT_NAME}
         src/Application.cpp
+<<<<<<< HEAD
+=======
+        src/gui/core/Base.cpp
+        src/gui/gtk/Gtk.cpp
+        src/gui/gtk/GtkAddMagnetLinkWindow.cpp
+        src/gui/gtk/GtkMainWindow.cpp
+        src/gui/gtk/GtkTorrentTreeView.cpp
+>>>>>>> a7e10fe5a944ab91a7ac7659fcc949c915154bbc
         src/core/Core.cpp
         src/core/Torrent.cpp
         src/core/Log.cpp
@@ -57,4 +70,4 @@ TARGET_LINK_LIBRARIES ( ${PROJECT_NAME}
         ${LIBTORRENT_LIBRARIES}
 )      
 
-INSTALL(TARGETS ${PROJECT_NAME} DESTINATION ${PREFIX}/bin/ PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ GROUP_EXECUTE)
+INSTALL(TARGETS ${PROJECT_NAME} DESTINATION ${PREFIX}/bin/ PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ GROUP_READ GROUP_EXECUTE WORLD_READ WORLD_EXECUTE)
