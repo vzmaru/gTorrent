@@ -1,9 +1,6 @@
-#gTorrent
-[![Build Status](https://travis-ci.org/gtorrent/gTorrent.svg?branch=master)](https://travis-ci.org/gtorrent/gTorrent)
-
 # please move to [core](https://github.com/gtorrent/gtorrent-core) and [UI](https://github.com/gtorrent/gtorrent-gtk) repos
 
----
+----
 
 [Screencast (old version)](http://a.pomf.se/lkowau.webm)
 
